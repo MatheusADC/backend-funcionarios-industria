@@ -22,8 +22,8 @@ public class FuncionarioController {
     }
 
     @PostMapping("/resetar")
-    public List<FuncionarioResponseDTO> resetar() {
-        return toDtoList(service.resetar());
+    public List<FuncionarioValoresBrutosDTO> resetar() {
+        return toDtoResetList(service.resetar());
     }
 
     @GetMapping("/3-1-inserir")
@@ -108,5 +108,9 @@ public class FuncionarioController {
 
     private List<FuncionarioResponseDTO> toDtoList(List<Funcionario> lista) {
         return lista.stream().map(FuncionarioResponseDTO::new).collect(Collectors.toList());
+    }
+
+    private List<FuncionarioValoresBrutosDTO> toDtoResetList(List<Funcionario> lista) {
+        return lista.stream().map(FuncionarioValoresBrutosDTO::new).collect(Collectors.toList());
     }
 }
